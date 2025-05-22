@@ -10,6 +10,7 @@ services:
       - backend  # Start backend antes do frontend
 
   backend:
+    restart: always
     build:
       context: ./backend/TodoApi  # Backend source and Dockerfile
     ports:
