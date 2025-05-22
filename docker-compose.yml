@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  frontend:
+    build:
+      context: ./frontend  # Frontend source and Dockerfile
+    ports:
+      - "3000:80"  # Host 3000 → container 80 (Nginx)
+    depends_on:
+      - backend  # Start backend antes do frontend
+
+  backend:
+    build:
+      context: ./backend/TodoApi  # Backend source and Dockerfile
+    ports:
+      - "5000:80"  # Host 5000 → container 80 (.NET)
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=database;Port=5432;Database=mydb;Username=myuser;Password=1234
+      # DB connection string para .NET (usa nome do serviço 'database')
+    depends_on:
+      - database  # Inicia database antes do backend
+
+  database:
+    image: postgres  # Imagem oficial do PostgreSQL
+    restart: always  # Reinicia se cair
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5434:5432"  # Host 5434 → container 5432 (PostgreSQL)
