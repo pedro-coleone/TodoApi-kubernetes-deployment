@@ -41,7 +41,6 @@ Este tutorial orienta como criar uma aplicação composta por múltiplos contêi
   /database
     (sem arquivos; configuração no docker-compose)
 docker-compose.yml
-nginx.conf
 README.md
 ```
 

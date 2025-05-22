@@ -16,7 +16,6 @@ services:
       - "5000:80"  # Host 5000 → container 80 (.NET)
     environment:
       - ConnectionStrings__DefaultConnection=Host=database;Port=5432;Database=mydb;Username=myuser;Password=1234
-      # DB connection string para .NET (usa nome do serviço 'database')
     depends_on:
       - database  # Inicia database antes do backend
 

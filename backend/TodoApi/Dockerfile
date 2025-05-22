@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
 WORKDIR /app
 
-# Copia csproj e restaura dependências
+# Copia csproj e restaura dependências pra aproveitar o cache
 COPY *.csproj ./
 RUN dotnet restore
 
