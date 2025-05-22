@@ -1,4 +1,3 @@
-```markdown
 # TodoApi-devops
 
 ## 📚 Tutorial de Criação da Aplicação
@@ -299,4 +298,3 @@ docker-compose up --build
 - Curso: Bacharelado em Ciência da Computação 
 - Professor: Delano Medeiros Beder 
 - Data: 22/05/2025
-```
