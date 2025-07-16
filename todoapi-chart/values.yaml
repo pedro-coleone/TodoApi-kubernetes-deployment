@@ -1,0 +1,33 @@
+# Backend config
+backend:
+  name: backend
+  image: backend:latest
+  containerPort: 80
+  env:
+    connectionString: "Host=postgres;Port=5432;Database=todo;Username=postgres;Password=postgres"
+
+# Frontend config
+frontend:
+  name: frontend
+  image: frontend:latest
+  containerPort: 80
+
+# Postgres config
+postgres:
+  name: postgres
+  image: postgres:15
+  containerPort: 5432
+  env:
+    POSTGRES_DB: todo
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
+
+# Ingress config
+ingress:
+  enabled: true
+  name: todoapi-ingress
+  host: k8s.local
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  frontendServiceName: frontend
+  frontendServicePort: 80

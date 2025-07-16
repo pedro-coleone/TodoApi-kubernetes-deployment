@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.backend.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.backend.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.backend.name }}
+    spec:
+      containers:
+        - name: {{ .Values.backend.name }}
+          image: {{ .Values.backend.image }}
+          imagePullPolicy: Never
+          ports:
+            - containerPort: {{ .Values.backend.containerPort }}
+          env:
+            - name: ConnectionStrings__DefaultConnection
+              value: {{ .Values.backend.env.connectionString }}
