@@ -29,9 +29,7 @@ chmod +x deploy.sh
 
 Após o deploy e com o `minikube tunnel` ativo, acesse:
 
-- **Frontend:** `http://k8s.local`  
-- **Backend:** `http://k8s.local/api`
-- **Banco de dados:** Interno ao cluster via serviço `postgres:5432`
+- **Frontend:** `http://k8s.local`
 
 ## 📁 Estrutura do Projeto
 
